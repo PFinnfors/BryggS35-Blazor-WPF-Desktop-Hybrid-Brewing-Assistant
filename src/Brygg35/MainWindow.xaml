@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Brygg35"
         xmlns:blazor="clr-namespace:Microsoft.AspNetCore.Components.WebView.Wpf;assembly=Microsoft.AspNetCore.Components.WebView.Wpf"
         mc:Ignorable="d"
-        Title="Brygg35" Height="450" Width="800">
+        Title="Brygg35" Height="600" Width="1000">
     <DockPanel>
         <!--<StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="CadetBlue">
             <Label>This is native WPF UI</Label>

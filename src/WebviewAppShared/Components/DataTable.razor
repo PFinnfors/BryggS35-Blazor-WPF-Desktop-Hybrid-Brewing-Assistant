@@ -1,0 +1,145 @@
+﻿@namespace BryggS35.Components
+
+<div class="row">
+    <div class="col-md-6">
+        <label for="itemsPerPage">Items per page:</label>
+        <select id="itemsPerPage" @bind="ItemsPerPage">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <input type="text" placeholder="Search..." @bind-value="@SearchTerm" />
+    </div>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            @foreach (var header in ColumnHeaders)
+            {
+                <th>@header</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in FilteredData)
+        {
+            <tr>
+                @foreach (var header in ColumnHeaders)
+                {
+                    <td>@data.ElementAt(ColumnHeaders.IndexOf(header))</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+
+                <li class="active page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+
+                @*@for (int i = 1; i <= TotalPages; i++)
+                {
+                var pageNumber = i;
+                <li class="@((CurrentPage == pageNumber) ? "active" : "") page-item"><a class="page-link" href="#" @onclick="@(() => ChangePage(pageNumber))">@pageNumber</a></li>
+                }*@
+            </ul>
+        </nav>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public List<string> ColumnHeaders { get; set; } = new List<string>()
+    {
+        "Namn", "Nummer", "Typ"
+    };
+
+    [Parameter]
+    public List<List<string>> DataSource { get; set; } = new List<List<string>>()
+    {
+        new List<string>() { "AB", "1", "Ett" },
+        new List<string>() { "CD", "2", "Två" },
+        new List<string>() { "EF", "3", "Tre" },
+        new List<string>() { "GH", "4", "Fyra" },
+        new List<string>() { "IJ", "5", "Fem" },
+        new List<string>() { "KL", "6", "Sex" },
+        new List<string>() { "MN", "7", "Sju" },
+        new List<string>() { "OP", "8", "Åtta" },
+        new List<string>() { "QR", "9", "Nio" },
+        new List<string>() { "ST", "10", "Tio" },
+        new List<string>() { "UV", "11", "Elva" },
+        new List<string>() { "WX", "12", "Tolv" },
+        new List<string>() { "YZ", "13", "Tretton" },
+        new List<string>() { "ÅÄ", "14", "Fjorton" },
+        new List<string>() { "Ö", "15", "Femton" }
+    };
+
+    //private int _currentPage = 1;
+    //[Parameter]
+    //public int CurrentPage
+    //{
+    //    get => _currentPage;
+    //    set
+    //    {
+    //        if (_currentPage != value)
+    //        {
+    //            _currentPage = value;
+    //            StateHasChanged();
+    //        }
+    //    }
+    //}
+
+    private int _itemsPerPage = 10;
+    [Parameter]
+    public int ItemsPerPage
+    {
+        get => _itemsPerPage;
+        set
+        {
+            if (_itemsPerPage != value)
+            {
+                _itemsPerPage = value;
+                //CurrentPage = 1;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private string _searchTerm = "";
+    public string SearchTerm
+    {
+        get => _searchTerm;
+        set
+        {
+            if (_searchTerm != value)
+            {
+                _searchTerm = value;
+                //CurrentPage = 1;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private List<List<string>> FilteredData => DataSource
+        .Where(entry => entry.Any(v => v.ToLower().Contains(SearchTerm.ToLower())))
+        //.OrderBy(entry => entry.GetProperty(ColumnHeaders[0]).GetValue(item, null))
+        //.Skip((CurrentPage - 1) * ItemsPerPage)
+        .Take(ItemsPerPage)
+        .ToList();
+
+    //private int TotalPages => (int)Math.Ceiling((double)DataSource.Count / ItemsPerPage);
+
+    //private void ChangePage(int pageNumber)
+    //{
+    //    CurrentPage = pageNumber;
+    //}
+}
