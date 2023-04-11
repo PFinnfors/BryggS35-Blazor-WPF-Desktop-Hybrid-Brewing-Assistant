@@ -4,7 +4,6 @@
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using WebviewAppTest;
-using WebviewAppTest.Data;
 
 namespace Brygg35
 {
@@ -22,7 +21,6 @@ namespace Brygg35
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddWpfBlazorWebView();
             serviceCollection.AddSingleton<AppState>(_appState);
-            serviceCollection.AddSingleton<WeatherForecastService>();
             Resources.Add("services", serviceCollection.BuildServiceProvider());
 
         }

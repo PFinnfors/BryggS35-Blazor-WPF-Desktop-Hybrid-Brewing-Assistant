@@ -1,12 +1,246 @@
 ﻿@page "/recept"
 @namespace BryggS35.Pages
 @inject WebviewAppTest.AppState AppState
-@using BryggS35.Components
+
+@using WebviewAppShared.Components
+@using WebviewAppShared.Data
+@using WebviewAppShared.Data.Models
+@using WebviewAppShared.Data.Components
+@using Newtonsoft.Json
+
 
 <h1>Recept</h1>
 
-<DataTable />
+<DataTable Table="@Data" />
 
 @code {
 
+    public TableData Data { get; set; }
+
+    public Recept()
+    {
+        List<Recipe> Recipes = new List<Recipe>()
+        {
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept9",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "77.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            },
+            new Recipe()
+            {
+                Name = "KodatRecept9",
+                Author = "Pier Finnfors",
+                Version = "1.0",
+                LastUsed = "N/A",
+                Type = "FakeTyp",
+                Brewer = "Hemma",
+                BatchSize = "1",
+                BoilSize = "2",
+                BoilTime = "3",
+                ABV = "5",
+                OG = "6",
+                FG = "7"
+            }
+        };
+
+        dynamic rr = DataHelper.GetData("Recipes", $"{DataHelper.DataPath}.Recipe");
+
+        string json = JsonConvert.SerializeObject(rr);
+        List<Recipe> recipes = JsonConvert.DeserializeObject<List<Recipe>>(json);
+
+        //var rrr = rr.Cast<Recipe>().ToList();
+        //var t = (object)Recipes;
+
+        Data = new TableData(recipes);
+    }
 }
